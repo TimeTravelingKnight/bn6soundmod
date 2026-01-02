@@ -1,0 +1,30 @@
+MEMORY
+  {
+    rom (rx)  : ORIGIN = 0x8000000,LENGTH = 32M
+  
+  }
+
+SECTIONS
+{
+	
+       
+     
+   
+         .rodata : {
+
+        *(.rom)
+	*(.rodata) . = ALIGN(4);
+       
+        }>rom
+	. = 0x815A078+6*8;
+        .songtable :{*(.songtable)}
+        
+        . = 0x8159F44;
+	.trackconstants :{*(.trackconstants)}
+ 
+        . = 0x800059C; 
+        .pcminfo :{*(.pcminfo)}
+  
+
+
+}

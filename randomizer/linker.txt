@@ -1,0 +1,22 @@
+BNRNGFUNC = 0x800154D;
+tpointer = 0x8159DC8;
+spointer = 0x8159F48;
+hookplacement = 0x8150476;
+returnbacktom4a = 0x8150480|1;
+randomseed = 0x2001120;
+
+
+SECTIONS
+{
+	. = 0x8000000;
+/*	.rom (COPY): {KEEP(*.o(.rom))} */
+	.rom : {*(.rom)}
+	
+	.text : {*(.text)}
+	.rodata : {*(.rodata) . = ALIGN(4);}
+	
+        . = hookplacement;
+        
+	.hookToRandomize : {*(.hookToRandomize)}
+		
+} 
